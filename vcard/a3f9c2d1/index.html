@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Care Instructions — Heidi, Gwyen & Nel</title>
+  <meta name="description" content="Pet care instructions for Heidi, Gwyen, and Nel. Powered by Pet vCard from Dragon Well Forge." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep:      #0a0a0a;
+      --bg-surface:   #111111;
+      --bg-card:      #161616;
+      --bg-card-alt:  #1a1a1a;
+      --border:       #2a2a2a;
+      --border-light: #333333;
+      --ember:        #c45e1a;
+      --ember-glow:   #e87a2a;
+      --ember-dim:    #7a3a10;
+      --stone:        #9a8f82;
+      --stone-light:  #c4b9aa;
+      --text:         #e8e0d4;
+      --text-muted:   #6b635a;
+      --copper:       #8b6f47;
+      --warn:         #c0392b;
+      --warn-bg:      #1a0d0c;
+      --warn-border:  #5a1a15;
+      --note:         #8a7020;
+      --note-bg:      #141005;
+      --note-border:  #3a2e08;
+      --ok:           #4a9e6b;
+
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-body:    'Crimson Pro', Georgia, serif;
+      --font-mono:    'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* ── NOISE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--ember), transparent);
+    }
+
+    .header-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 0.5rem;
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--stone-light);
+      letter-spacing: 0.05em;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      color: var(--stone);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* ── TABS ── */
+    .tab-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      background: var(--bg-deep);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 0.9rem 0.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .tab-bar a.active,
+    .tab-bar a:hover {
+      color: var(--ember);
+      border-bottom-color: var(--ember);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      display: none;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section.active { display: block; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin: 1rem 0 0.4rem;
+    }
+
+    /* ── WARN / NOTE BOXES ── */
+    .warn-box {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-left: 3px solid var(--warn);
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: #e87a72;
+      margin-top: 0.75rem;
+    }
+
+    .warn-box strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .note-box {
+      background: var(--note-bg);
+      border: 1px solid var(--note-border);
+      border-left: 3px solid var(--note);
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: #c9a850;
+      margin-top: 0.75rem;
+    }
+
+    /* ── TIME BLOCKS ── */
+    .time-block {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .time-label {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ember);
+      min-width: 52px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .time-content { flex: 1; }
+
+    .time-title {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--stone-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .time-content ul,
+    .time-content ol {
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--stone);
+    }
+
+    .time-content li { margin-bottom: 0.25rem; }
+
+    .time-content ul ul {
+      margin-top: 0.2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── TABLES ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+    }
+
+    th {
+      background: rgba(196,94,26,0.08);
+      color: var(--ember);
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--stone);
+      vertical-align: top;
+    }
+
+    td:first-child { color: var(--stone-light); }
+    td strong { color: var(--stone-light); }
+
+    tr:last-child td { border-bottom: none; }
+
+    /* ── ANIMAL PROFILE ── */
+    .animal-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--stone-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .animal-meta {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* ── COMMAND CHECK ── */
+    .check { color: var(--ember); font-size: 1rem; }
+    td[style*="text-align:center"] { text-align: center; }
+
+    /* ── INTRO TEXT ── */
+    .intro-text {
+      font-size: 0.95rem;
+      color: var(--stone);
+      line-height: 1.75;
+    }
+
+    .intro-text p { margin-bottom: 0.75rem; }
+    .intro-text p:last-child { margin-bottom: 0; }
+
+    /* ── FOOTER BRAND ── */
+    .vcard-footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .vcard-footer a {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .vcard-footer a:hover { color: var(--ember); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Pet vCard · Dragon Well Forge</p>
+  <h1>🐾 Pet Care Instructions</h1>
+  <p>For Heidi, Gwyen &amp; Nel</p>
+</header>
+
+<div class="tab-bar">
+  <a class="active" onclick="show('welcome', this)">Welcome</a>
+  <a onclick="show('schedule', this)">Schedule</a>
+  <a onclick="show('animals', this)">Animals</a>
+  <a onclick="show('commands', this)">Commands</a>
+</div>
+
+<!-- WELCOME -->
+<div id="welcome" class="section active">
+
+  <div class="card">
+    <div class="intro-text">
+      <p>Howdy! 👋</p>
+      <p>Thanks for looking after my four-legged children. I care a lot about their care and I appreciate your attention to them.</p>
+      <p>This guide has everything you need. Use the tabs above to jump between the daily schedule, individual animal profiles, and commands.</p>
+      <p>The robot vacuum runs daily at 3:30 PM — totally normal, don't worry about it. Please make sure Nel's toys are picked up before the afternoon walk.</p>
+      <p>Most items in the space are labeled with painters tape — if you're looking for something, check the labels first.</p>
+      <p>When in doubt, text me. That's what I'm here for.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">The Crew</div>
+    <table>
+      <tr><th>Name</th><th>Species</th><th>Notes</th></tr>
+      <tr><td><strong>Heidi</strong></td><td>Dog</td><td>13yo Black Mouth Cur. On cancer treatment. Gentle care.</td></tr>
+      <tr><td><strong>Gwyen</strong></td><td>Cat</td><td>5yo Tuxedo cat. Free feeds. Easy going.</td></tr>
+      <tr><td><strong>Nel</strong></td><td>Dog</td><td>2yo German Shorthaired Pointer. High energy.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Where Things Are</div>
+    <table>
+      <tr><th>Item</th><th>Location</th></tr>
+      <tr><td>Chemo Pill</td><td>Fridge door, yellow bag</td></tr>
+      <tr><td>Dog food &amp; snacks</td><td>Pantry</td></tr>
+      <tr><td>Hot water dispenser</td><td>Counter, next to window (Heidi's 1900 meal)</td></tr>
+      <tr><td>Litter box</td><td>Master closet, closest to the sink (optional)</td></tr>
+      <tr><td>Medications (general)</td><td>Top of the fridge</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- SCHEDULE -->
+<div id="schedule" class="section">
+
+  <div class="card">
+    <div class="time-block">
+      <div class="time-label">0700</div>
+      <div class="time-content">
+        <div class="time-title">🚽 Potty → 💊 Meds → 🍽 Breakfast</div>
+        <ul>
+          <li>Take dogs outside first</li>
+          <li>Then serve medications, then breakfast</li>
+        </ul>
+        <div class="card-subtitle">Medications</div>
+        <ul>
+          <li>Gwyen: Inhaler
+            <ul><li>Hold on face, wait 10 sec, release. Once is fine if she fights it.</li></ul>
+          </li>
+          <li>Heidi: 1 pill each: D, H, I, E, A · 2 pills: C
+            <ul>
+              <li>Each letter = a labeled pill bottle.</li>
+              <li>A will appear as a ½ pill — that is correct.</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="card-subtitle">Food</div>
+        <ul>
+          <li>Gwyen: Free feed, keep bowl full</li>
+          <li>Heidi: ½ can wet + ½ cup dry, covered with water &amp; mixed. Cover remaining wet food with orange can cover, refrigerate for 1900.</li>
+          <li>Nel: 1 cup dry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="time-block">
+      <div class="time-label">1030</div>
+      <div class="time-content">
+        <div class="time-title">🦮 Morning Dog Walk</div>
+        <ul>
+          <li>Leisurely pace; stretch legs, touch grass</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="time-block">
+      <div class="time-label">1530</div>
+      <div class="time-content">
+        <div class="time-title">🏃 Afternoon Dog Walk</div>
+        <ul>
+          <li>More intense; especially important for Nel</li>
+          <li>Goal is to regulate her energy for the evening</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="time-block">
+      <div class="time-label">1830</div>
+      <div class="time-content">
+        <div class="time-title">🐕 Early Dinner Lobbying</div>
+        <ul>
+          <li>Dogs may start asking around 1830 — go ahead and feed them</li>
+          <li>Dinner window is 1830–1900, whenever works for you</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="time-block">
+      <div class="time-label">1900</div>
+      <div class="time-content">
+        <div class="time-title">💊 Medication #2 + 🍽 Dinner</div>
+        <div class="card-subtitle">Medications</div>
+        <ul>
+          <li>Gwyen: Inhaler — once is sufficient if she fights it</li>
+          <li>Heidi: 1 pill each: D, H, I, E, F · 2 pills: C</li>
+        </ul>
+        <div class="card-subtitle">Food</div>
+        <ul>
+          <li>Gwyen: Keep bowl full</li>
+          <li>Heidi: ½ can wet + ½ cup dry:
+            <ol style="padding-left:1.2rem; margin-top:0.3rem; font-size:0.88rem; color:var(--stone);">
+              <li>Add ½ cup dry to bowl</li>
+              <li>Spoon remaining wet food from fridge over dry</li>
+              <li>Fill bowl ¾ with hot water from black dispenser (next to window)</li>
+              <li>Mix together</li>
+            </ol>
+          </li>
+          <li>Nel: 1 cup dry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="time-block">
+      <div class="time-label">2000</div>
+      <div class="time-content">
+        <div class="time-title">💊 Medication #3</div>
+        <div class="warn-box">
+          <strong>⚠️ Chemotherapy Medication</strong>
+          Use gloves. Gloves are next to Gwyen's food bowl. Wash hands thoroughly after.
+        </div>
+        <div class="card-subtitle" style="margin-top:0.75rem;">Medications</div>
+        <ul>
+          <li>Heidi: 1 Chemo pill
+            <ul>
+              <li>Fridge door, yellow bag</li>
+              <li>Individually wrapped — do not break, administer whole</li>
+              <li>Wash hands thoroughly after</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ANIMALS -->
+<div id="animals" class="section">
+
+  <div class="card">
+    <div class="animal-name">🐕 Heidi</div>
+    <div class="animal-meta">13 years old · Black Mouth Cur · Cancer treatment</div>
+    <table>
+      <tr><th>Item</th><th>Details</th></tr>
+      <tr><td>Food</td><td>½ can wet + ½ cup dry, covered with water &amp; mixed. Use black hot water dispenser at 1900.</td></tr>
+      <tr><td>Exercise</td><td>Walk at her pace. Follow her lead.</td></tr>
+      <tr><td>Med #1 (0700)</td><td>1 pill each: D, H, I, E, A · 2 pills: C</td></tr>
+      <tr><td>Med #2 (1900)</td><td>1 pill each: D, H, I, E, F · 2 pills: C</td></tr>
+      <tr><td>Med #3 (2000)</td><td>Chemo pill — see warning below</td></tr>
+    </table>
+    <div class="warn-box">
+      <strong>⚠️ Chemo Pill (2000)</strong>
+      Wear gloves. Located in fridge door, yellow bag. Individually wrapped — do not break, administer whole. Wash hands thoroughly after.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="animal-name">🐈 Gwyen</div>
+    <div class="animal-meta">5 years old · Tuxedo cat</div>
+    <table>
+      <tr><th>Item</th><th>Details</th></tr>
+      <tr><td>Food</td><td>Free feed — keep bowl from going empty and she's happy</td></tr>
+      <tr><td>Litter</td><td>No need to change. If you'd like to, it's in the master closet closest to the sink.</td></tr>
+      <tr><td>Medications</td><td>Inhaler at 0700 &amp; 1900. Hold on face, wait 10 sec, release. Once is enough if she fights it. Finding her may be the harder part.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="animal-name">🐕 Nel</div>
+    <div class="animal-meta">2 years old · German Shorthaired Pointer</div>
+    <table>
+      <tr><th>Item</th><th>Details</th></tr>
+      <tr><td>Food</td><td>1 cup dry at 0700 &amp; 1900</td></tr>
+      <tr><td>Exercise</td><td>High energy. 20–60 min depending on conditions. She'll let you know when she's done.</td></tr>
+      <tr><td>Medications</td><td>None</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- COMMANDS -->
+<div id="commands" class="section">
+
+  <div class="card">
+    <div class="card-title">Command Matrix</div>
+    <table>
+      <tr>
+        <th>Command</th>
+        <th style="text-align:center;">Heidi</th>
+        <th style="text-align:center;">Nel</th>
+        <th style="text-align:center;">Gwyen</th>
+      </tr>
+      <tr><td>Here</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>Sit</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>Down</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>Wait</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>Go</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>"Scooch ya booch"</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>Move</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>"Get yer bite"</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>"Excuse me?!"</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;"></td></tr>
+      <tr><td>"Den, Den"</td><td style="text-align:center;"></td><td style="text-align:center;"></td><td style="text-align:center;" class="check">✓</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Command Notes</div>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td>Go</td><td>Move forward</td></tr>
+      <tr><td>"Scooch ya booch"</td><td>Friendly cue to get out of the way</td></tr>
+      <tr><td>Move</td><td>Serious version — get out of the way, now</td></tr>
+      <tr><td>"Get yer bite"</td><td>Release cue to eat their meals</td></tr>
+      <tr><td>"Excuse me?!"</td><td>Knock it off; correct yourself now</td></tr>
+      <tr><td>"Den, Den"</td><td>Gwyen's come cue — call her name like this and she'll come</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Name Escalation</div>
+    <table>
+      <tr><th>Animal</th><th>Escalation</th></tr>
+      <tr><td>Nel</td><td>Nel → Nelly → Nelliel</td></tr>
+      <tr><td>Heidi</td><td>Heidi → Hei-Di</td></tr>
+      <tr><td>Gwyen</td><td>Gwyen → Gwyendolyn Stacy</td></tr>
+    </table>
+    <div class="note-box" style="margin-top:0.75rem; font-size:0.85rem;">
+      Using their full name or a firmer tone means business.
+    </div>
+  </div>
+
+</div>
+
+<div class="vcard-footer">
+  <a href="../../index.html">Powered by Pet vCard · Dragon Well Forge</a>
+</div>
+
+<script>
+  function show(id, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-bar a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    el.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
