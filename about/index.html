@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — Dragon Well Forge</title>
+  <meta name="description" content="Dragon Well Forge was built by a pet parent who needed it. This is the story of Heidi, Nel, Gwyen, and the ones who came before." />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <style>
+    .animal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color 0.2s;
+    }
+
+    .animal-card:hover { border-color: var(--ember-dim); }
+
+    .animal-card.memorial {
+      border-color: #1e1e1e;
+      opacity: 0.85;
+    }
+
+    .animal-card.memorial:hover { border-color: #333; opacity: 1; }
+
+    .animal-photo {
+      width: 100px;
+      height: 100px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .animal-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .animal-photo-placeholder {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    .animal-photo-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.6);
+      font-family: var(--font-mono);
+      font-size: 0.48rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0.2rem;
+    }
+
+    .animal-info {}
+
+    .animal-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--stone-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .animal-card.memorial .animal-name {
+      color: var(--stone);
+    }
+
+    .animal-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 0.3rem;
+    }
+
+    .animal-meta {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .animal-bio {
+      font-size: 0.95rem;
+      color: var(--stone);
+      line-height: 1.7;
+    }
+
+    .memorial-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0 2rem;
+    }
+
+    .memorial-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .animal-card {
+        grid-template-columns: 1fr;
+      }
+      .animal-photo {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/img/logo.png" alt="Dragon Well Forge" />
+      <span class="nav-brand-text">Dragon Well Forge</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../workshop/">The Workshop</a></li>
+      <li><a href="../vcard/">Pet vCard</a></li>
+      <li><a href="../about/" class="active">Our Story</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section style="min-height:50vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:8rem 2rem 5rem; position:relative; overflow:hidden;">
+
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 50% 40% at 50% 70%, rgba(196,94,26,0.07) 0%, transparent 70%); pointer-events:none;"></div>
+
+    <p class="fade-up delay-1" style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--ember); margin-bottom:1.5rem;">
+      Dragon Well Forge · Portland, OR
+    </p>
+
+    <h1 class="fade-up delay-2" style="font-family:var(--font-display); font-weight:900; font-size:clamp(2.5rem,8vw,5rem); line-height:0.95; color:var(--stone-light); margin-bottom:1rem;">
+      Our Story
+    </h1>
+
+    <div class="ember-divider fade-up delay-3" style="max-width:260px; margin:0 auto 2rem;">
+      <div class="ember-dot"></div>
+    </div>
+
+    <p class="fade-up delay-3" style="font-family:var(--font-body); font-size:clamp(1.1rem,2.5vw,1.5rem); font-weight:300; font-style:italic; color:var(--stone-light); max-width:560px; margin:0 auto;">
+      Every tool we build started with an animal we loved.
+    </p>
+  </section>
+
+  <!-- THE CREW -->
+  <section style="border-top:1px solid var(--border);">
+    <div class="section-inner">
+      <p class="section-label">The Current Crew</p>
+      <h2 class="section-title">The ones who started all of this.</h2>
+      <p class="section-body" style="margin-bottom:2.5rem;">Dragon Well Forge exists because of these three. Their care, their personalities, and their needs shaped every product that comes out of this workshop.</p>
+
+      <!-- HEIDI -->
+      <div class="animal-card">
+        <div class="animal-photo">
+          <!-- Replace src with assets/img/heidi.jpg when ready -->
+          <span class="animal-photo-placeholder">🐕</span>
+          <div class="animal-photo-label">Photo coming</div>
+        </div>
+        <div class="animal-info">
+          <div class="animal-name">Heidi</div>
+          <div class="animal-title">Forgemaster</div>
+          <div class="animal-meta">13 years old · Black Mouth Cur · Cancer treatment</div>
+          <p class="animal-bio">The reason Pet vCard exists. Heidi's care is regimental, scheduled, and exact — six medications, three feeding windows, and a chemo protocol that requires gloves. She is the proof of concept, the origin story, and the heart of this whole operation. Walk at her pace. Follow her lead.</p>
+        </div>
+      </div>
+
+      <!-- GWYEN -->
+      <div class="animal-card">
+        <div class="animal-photo">
+          <!-- Replace src with assets/img/gwyen.jpg when ready -->
+          <span class="animal-photo-placeholder">🐈</span>
+          <div class="animal-photo-label">Photo coming</div>
+        </div>
+        <div class="animal-info">
+          <div class="animal-name">Gwyen</div>
+          <div class="animal-title">Master Artificer</div>
+          <div class="animal-meta">5 years old · Domestic Shorthair · Tuxedo cat</div>
+          <p class="animal-bio">Easygoing, free-feeding, and perpetually unbothered. Gwyen requires an inhaler twice daily — which she tolerates exactly as much as she feels like it. Finding her may be the harder part. Her full title, when she has earned it: Gwyendolyn Stacy.</p>
+        </div>
+      </div>
+
+      <!-- NEL -->
+      <div class="animal-card">
+        <div class="animal-photo">
+          <!-- Replace src with assets/img/nel.jpg when ready -->
+          <span class="animal-photo-placeholder">🐕</span>
+          <div class="animal-photo-label">Photo coming</div>
+        </div>
+        <div class="animal-info">
+          <div class="animal-name">Nel</div>
+          <div class="animal-title">Warden of the Well</div>
+          <div class="animal-meta">2 years old · German Shorthaired Pointer · High energy</div>
+          <p class="animal-bio">Nel operates at one speed: full. Twenty to sixty minutes of exercise depending on conditions, and she'll let you know when she's done. Keep her toys picked up before the afternoon walk. Her full name, when business is serious: Nelliel.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEMORIAL -->
+  <section style="border-top:1px solid var(--border); background:var(--bg-surface);">
+    <div class="section-inner">
+      <p class="memorial-label">In Memoriam</p>
+      <h2 class="section-title" style="color:var(--stone);">The ones who came before.</h2>
+      <p class="section-body" style="margin-bottom:2.5rem;">They shaped what it means to care for an animal the right way. They are why this matters.</p>
+
+      <!-- ABIGAIL -->
+      <div class="animal-card memorial">
+        <div class="animal-photo">
+          <!-- Replace src with assets/img/abigail.jpg when ready -->
+          <span class="animal-photo-placeholder">🐈</span>
+          <div class="animal-photo-label">Photo coming</div>
+        </div>
+        <div class="animal-info">
+          <div class="memorial-badge">January 2026 · Acute Kidney Failure</div>
+          <div class="animal-name">Abigail</div>
+          <div class="animal-meta">13 years old · Domestic Shorthair cat</div>
+          <p class="animal-bio">Abigail passed in January 2026. She was 13 years old and cared for until the end.</p>
+        </div>
+      </div>
+
+      <!-- ZOEY -->
+      <div class="animal-card memorial">
+        <div class="animal-photo">
+          <!-- Replace src with assets/img/zoey.jpg when ready -->
+          <span class="animal-photo-placeholder">🐕</span>
+          <div class="animal-photo-label">Photo coming</div>
+        </div>
+        <div class="animal-info">
+          <div class="memorial-badge">April 2023</div>
+          <div class="animal-name">Zoey</div>
+          <div class="animal-meta">7 years old · Basenji mix · Former service dog</div>
+          <p class="animal-bio">Zoey was a service dog who gave everything she had. She passed in April 2023. She is not forgotten.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section style="border-top:1px solid var(--border);">
+    <div class="section-inner">
+      <div class="pull-quote" style="max-width:600px;">
+        "Every tool we build is for the pet parent who knows what it costs to lose one. And who isn't willing to leave anything to chance."
+      </div>
+      <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="../vcard/" class="btn-primary">See Pet vCard</a>
+        <a href="../workshop/" class="btn-secondary">Visit the Workshop</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="../assets/img/logo.png" alt="Dragon Well Forge" class="footer-logo" />
+    <div class="footer-brand">Dragon Well Forge</div>
+    <div class="footer-tagline">We make the abstract into reality</div>
+    <ul class="footer-links">
+      <li><a href="../workshop/">The Workshop</a></li>
+      <li><a href="../vcard/">Pet vCard</a></li>
+      <li><a href="../about/">Our Story</a></li>
+      <li><a href="mailto:dragon.well.forge.pdx@gmail.com">Contact</a></li>
+    </ul>
+    <p class="footer-bottom">Portland, OR &nbsp;·&nbsp; dragon.well.forge.pdx@gmail.com</p>
+  </footer>
+
+</body>
+</html>
