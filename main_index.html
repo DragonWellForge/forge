@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dragon Well Forge — We make the abstract into reality</title>
+  <meta name="description" content="Dragon Well Forge is a Portland, OR maker studio turning concepts into reality through custom fabrication and digital products." />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="assets/img/logo.png" alt="Dragon Well Forge" />
+      <span class="nav-brand-text">Dragon Well Forge</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="vcard/">vCard</a></li>
+      <li><a href="workshop/">The Forge</a></li>
+      <li><a href="#story">Our Story</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:8rem 2rem 6rem; position:relative; overflow:hidden;">
+
+    <div style="position:absolute; inset:0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(196,94,26,0.1) 0%, transparent 70%); pointer-events:none;"></div>
+
+    <img src="assets/img/logo.png" alt="Dragon Well Forge" class="fade-up delay-1"
+      style="width:110px; height:110px; margin:0 auto 2.5rem; filter:drop-shadow(0 0 20px rgba(196,94,26,0.5));" />
+
+    <p class="fade-up delay-2" style="font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--ember); margin-bottom:1.5rem;">
+      Portland, OR · Est. 2026
+    </p>
+
+    <h1 class="fade-up delay-3" style="font-family:var(--font-display); font-weight:900; font-size:clamp(3rem,10vw,6.5rem); line-height:0.95; letter-spacing:0.02em; color:var(--stone-light); text-shadow:0 0 80px rgba(196,94,26,0.15), 0 2px 4px rgba(0,0,0,0.8); margin-bottom:0.5em;">
+      Dragon Well<br>Forge
+    </h1>
+
+    <div class="ember-divider fade-up delay-4" style="max-width:300px; margin:0 auto 2rem;">
+      <div class="ember-dot"></div>
+    </div>
+
+    <p class="fade-up delay-4" style="font-family:var(--font-body); font-size:clamp(1.3rem,3vw,1.8rem); font-weight:300; font-style:italic; color:var(--stone-light); max-width:580px; margin:0 auto 1rem;">
+      We make the abstract into reality.
+    </p>
+
+    <p class="fade-up delay-5" style="font-size:1.05rem; color:var(--stone); max-width:480px; margin:0 auto 3rem;">
+      A Portland maker studio bringing concepts to life through custom fabrication and digital products.
+    </p>
+
+    <div class="fade-up delay-6" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="vcard/" class="btn-primary">Explore vCard</a>
+      <a href="workshop/" class="btn-secondary">Commission a Build</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div style="position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:0.4rem; opacity:0; animation:fadeUp 1s ease 1.6s forwards;">
+      <span style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.2em; color:var(--text-muted); text-transform:uppercase;">Scroll</span>
+      <div style="width:1px; height:36px; background:linear-gradient(to bottom, var(--ember-dim), transparent);"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section style="border-top:1px solid var(--border); background:var(--bg-surface);">
+    <div class="section-inner">
+      <p class="section-label">Products</p>
+      <h2 class="section-title">What we make.</h2>
+      <p class="section-body" style="margin-bottom:3rem;">Two products. One mission. Everything Dragon Well Forge builds starts with a real problem and ends with something you can hold or use.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+
+        <!-- vCard -->
+        <div class="card">
+          <div class="card-label">Product 01</div>
+          <div class="card-title">vCard</div>
+          <div class="card-status status-soon">● Coming Soon</div>
+          <p class="card-body">A personalized pet care page for your sitter. Medications, schedules, feeding instructions, and commands — all behind a QR code on your wall. Because their care is too important to explain twice.</p>
+          <a href="vcard/" class="btn-secondary">Learn More</a>
+        </div>
+
+        <!-- The Forge -->
+        <div class="card">
+          <div class="card-label">Product 02</div>
+          <div class="card-title">The Forge</div>
+          <div class="card-status status-live">● Open for Commissions</div>
+          <p class="card-body">Custom fabrication on demand. Bring your concept — a part, a prototype, a problem that needs a physical solution — and we'll build it. The 3D printer is just one tool in the shop.</p>
+          <a href="workshop/" class="btn-primary">Commission a Build</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story" style="border-top:1px solid var(--border);">
+    <div class="section-inner">
+      <p class="section-label">Origin</p>
+      <h2 class="section-title">Built by someone who needed it.</h2>
+
+      <div class="section-body">
+        <p>Dragon Well Forge started with two problems. A 13-year-old dog on cancer treatment with a care routine too complex to leave to chance. And a vet clinic paying $70 for a part that costs $1.50 to print.</p>
+
+        <div class="pull-quote">
+          "I don't want someone's negligence to cost my dog her life."
+        </div>
+
+        <p>So we built the tools that didn't exist. A pet care page that lives on your wall. A fabrication shop that takes your concept seriously. Both are the same thing: turning something abstract — a worry, an idea, a need — into something real.</p>
+
+        <p>That's the forge. That's always been the forge.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="assets/img/logo.png" alt="Dragon Well Forge" class="footer-logo" />
+    <div class="footer-brand">Dragon Well Forge</div>
+    <div class="footer-tagline">We make the abstract into reality</div>
+    <ul class="footer-links">
+      <li><a href="vcard/">vCard</a></li>
+      <li><a href="workshop/">The Forge</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="mailto:dragon.well.forge.pdx@gmail.com">Contact</a></li>
+    </ul>
+    <p class="footer-bottom">Portland, OR &nbsp;·&nbsp; dragon.well.forge.pdx@gmail.com</p>
+  </footer>
+
+</body>
+</html>
