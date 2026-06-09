@@ -454,6 +454,17 @@ footer {
 .delay-5 { animation-delay: 1.0s; }
 .delay-6 { animation-delay: 1.2s; }
 
+
+.animal-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.3rem;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   .nav-links { display: none; }
