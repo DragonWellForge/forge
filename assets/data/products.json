@@ -1,0 +1,65 @@
+// assets/data/products.json
+[
+  {
+    "id": "pet-vcard",
+    "name": "Pet vCard",
+    "stage": "ready",
+    "type": "digital",
+    "desc": "A personalized pet care page for your sitter. Medications, schedules, feeding instructions, and commands — all behind a QR code on your wall.",
+    "image": "",
+    "status_label": "Coming Soon — Waitlist Open",
+    "status_class": "status-soon",
+    "cta_label": "Learn More",
+    "cta_url": "../vcard/",
+    "cad_url": "",
+    "video_url": ""
+  },
+  {
+    "id": "3d-printing",
+    "name": "3D Printing",
+    "stage": "workbench",
+    "type": "service",
+    "desc": "Functional parts, prototypes, custom fixtures, community builds. If you can describe it, we can probably print it.",
+    "image": "",
+    "status_label": "Open for Commissions",
+    "status_class": "status-live",
+    "cta_label": "Start a Commission",
+    "cta_url": "mailto:dragon.well.forge.pdx@gmail.com?subject=Workshop Commission",
+    "cad_url": "",
+    "video_url": ""
+  },
+  {
+    "id": "margin-template",
+    "name": "Margin Template Tool",
+    "stage": "design",
+    "type": "physical",
+    "desc": "A precision alignment tool for consistent margin spacing across print and layout work.",
+    "image": "",
+    "status_label": "",
+    "status_class": "",
+    "cta_label": "",
+    "cta_url": "",
+    "cad_url": "",
+    "video_url": ""
+  },
+  {
+    "id": "pet-warmer-vp-012",
+    "name": "Pet Warmer - VP-012",
+    "stage": "design",
+    "type": "physical",
+    "desc": "Kennel adapter built to attach to standard kennel door and Adroit Medical VetPro Patient Warming System Replacement Blower Hose VP-012",
+    "specs": [
+      "Fits hose diameter: 56mm (2\"), with slight stretch tolerance for a snug fit",
+      "Mounts to standard vet kennel door",
+      "Compatible with Adroit Medical VetPro VP-012 (32°C / 38°C / 43°C settings)",
+      "PLA suitable at typical 32°C setting; PETG recommended if running warmer settings"
+    ],
+    "image": "",
+    "status_label": "",
+    "status_class": "",
+    "cta_label": "",
+    "cta_url": "",
+    "cad_url": "",
+    "video_url": ""
+  }
+]
